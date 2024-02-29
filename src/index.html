@@ -1,13 +1,58 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
-</head>
-<body>
-    <p>Тут будет какой то контент</p>
-    <script defer src="./index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <title>Домашка по статистике</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Домашка по Статистике</h1>
+            <br>
+            <h2>Введение</h2>
+            <p>Автор: <span>Шибаленков Кирилл Артемович</span></p>
+            <p>Группа: <span>ИКВТ-22</span></p>
+            <p>Выбранный вариант: <span>30</span></p>
+            <br>
+            <h2>Порядок выполнения работы</h2>
+            <br>
+            <h3>1. Определить объем выборки</h3>
+            <p>Объем выборки n = <span id="n">Загрузка</span></p>
+            <br>
+            <h3>2. Найти наименьшее значение в выборке <span>xmin</span>, наибольшее значение <span>xmax</span>, вариационный размах <span>R</span></h3>
+            <p>Наименьшее значение <span>xmin</span> = <span id="min">Загрузка</span></p>
+            <p>Наибольшее значение <span>xmax</span> = <span id="max">Загрузка</span></p>
+            <p>Вариационный размах <span>R</span> = <span id="R">Загрузка</span></p>
+            <br>
+            <h3>3. Найти медиану и моду распределения</h3>
+            <p>Медиана = <span id="mediana">Загрузка</span></p>
+            <p>Мода = <span id="moda">Загрузка</span></p>
+            <br>
+            <h3>4. Построить интервальный вариационный ряд</h3>
+            <p>Число интервалов разбиения <span>l</span> = <span id="l">Загрузка</span></p>
+            <p>Длинна интервалов разбиения <span>h</span> = <span id="h">Загрузка</span></p>
+            <p>Границы интервалов <span>xi</span>: <span id="xi">Загрузка</span></p>
+            <p>Число попаданий <span>ni</span>: <span id="ni">Загрузка</span></p>
+            <p>Относительные частоты <span>wi</span>: <span id="wi">Загрузка</span></p>
+            <p>Величины <span>wi / h</span>: <span id="wi/h">Загрузка</span></p>
+            <br>
+            <h3>5. Гистограмма относительных частот</h3>
+            <div style="height: 100px;width: 100px;background-color: red;">Пока пусто</div>
+            <br>
+            <h3>6. Вычислить точечные оценки параметров распределения</h3>
+            <p>Выборочное среднее <span>x_</span> = <span id="x_">Загрузка</span></p>
+            <p>Выборочная дисперсия <span>D</span> = <span id="D">Загрузка</span></p>
+            <p>Исправленная выборочная дисперсия <span>s^2</span> = <span id="sq">Загрузка</span></p>
+
+
+
+
+        </div>
+        <script defer src="./index.js"></script>
+    </body>
 </html>
