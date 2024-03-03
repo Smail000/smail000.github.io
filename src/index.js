@@ -135,6 +135,25 @@ data_set("wi/h", intervalsArray.map(obj => round(obj.w / h, 3)).join(", "))
 // console.log(intervalsArray.map(obj => obj.w).reduce((acc, i) => acc+i, 0)) // проверка на соответствие w
 // console.log(intervalsArray); // Вывод всего массива данных
 
+
+// 5) Рисуем гистограмму
+
+// create a chart
+let chart = anychart.column();
+
+// create a column series and set the data
+var series = chart.column(intervalsArray.map(obj => [
+    `[ ${obj.leftBorder}, ${obj.rightBorder} )`,
+    round(obj.w / h, 3)
+]));
+
+// set the container id
+chart.container("gistogramma");
+
+// initiate drawing the chart
+chart.draw();
+
+
 // 6) Вычислить точечные оценки параметров распределения
 let x_ = round(data.reduce((acc, i) => acc+i, 0) / n, 2); // выборочное среднее
 let D = round(data.reduce((acc, i) => acc+(i - x_)**2, 0) / n, 2); // выборочную дисперсию
@@ -143,3 +162,56 @@ let sq = round((n / (n - 1)) * D, 2); // исправленную выбороч
 data_set("x_", x_);
 data_set("D", D);
 data_set("sq", sq);
+
+// 7) Построить интервальные оценки параметров распределения с надежностью 0.9, предполагая, что исследуемый признак распределен по нормальному закону
+
+let S_q = round(((intervalsArray.reduce(
+    (acc, obj) => acc+( ( (((obj.leftBorder+obj.rightBorder) / 2) - x_ )**2 ) * obj.nums.length ), 0
+)) / n)**0.5, 2)
+console.log(S_q);
+data_set("S_q", S_q);
+
+let t_st = 1.6602; // Коэффициент Стьюдента для числа степеней свободы 103 и надежностью 0.9
+data_set("t_st", t_st);
+
+let delta = t_st * ( S_q**0.5 / n**0.5 )
+// a => ( x_ - delta; x_ + delta )
+data_set("a1", round(x_ - delta, 3));
+data_set("a2", round(x_ + delta, 3));
+
+// Расчитываем границы для сигмы
+// Ссылка на таблицу https://www.bstu.by/uploads/attachments/metodichki/kafedri/VM_Statist.tabl..pdf
+
+let y1 = 0.897;
+let y2 = 1.133;
+
+// b => ( y1 * S_q; y2 * S_q )
+data_set("b1", round(y1 * S_q, 3));
+data_set("b2", round(y2 * S_q, 3));
+
+// 8. Проверить гипотезу о нормальном распределении признака при уровне значимости a = 0.05
+
+let sigmaB = D**0.5;
+data_set("sigmaB", round(sigmaB, 2))
+
+let Hiq = 0; // Хи квадрат наблюдений
+for (let interval of intervalsArray) {
+    interval.ui = (((interval.leftBorder+interval.rightBorder) / 2) - x_) / sigmaB;
+    interval.fi = (1 / ( (2 * Math.PI)**0.5 )) * (Math.E ** ( -(interval.ui**2) / 2 ));
+    interval.Pi = h * ( interval.fi / sigmaB );
+    interval.ni = n * interval.Pi
+    interval.Hiqi = (interval.nums.length - interval.ni)**2 / (interval.ni)
+    Hiq += interval.Hiqi;
+}
+data_set("Hiq", round(Hiq, 2))
+
+let k = l - 3; // Число степеней свободы
+data_set("k", round(k, 2))
+let Hiqk = 9.5; // Хи квадрат критическая (для 4 степеней свободы)
+data_set("Hiqk", round(Hiqk, 2))
+
+let gipoteza = Hiq < Hiqk
+// true - нет оснований отвергунть гипотезу
+// false - гипотеза не верна
+data_set("g1", gipoteza ? "<" : ">")
+data_set("g2", gipoteza ? "нет оснований" : "есть основания")

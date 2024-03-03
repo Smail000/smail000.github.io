@@ -42,17 +42,38 @@
             <p>Величины <span>wi / h</span>: <span id="wi/h">Загрузка</span></p>
             <br>
             <h3>5. Гистограмма относительных частот</h3>
-            <div style="height: 100px;width: 100px;background-color: red;">Пока пусто</div>
+            <div id="gistogramma"></div>
             <br>
             <h3>6. Вычислить точечные оценки параметров распределения</h3>
             <p>Выборочное среднее <span>x_</span> = <span id="x_">Загрузка</span></p>
             <p>Выборочная дисперсия <span>D</span> = <span id="D">Загрузка</span></p>
             <p>Исправленная выборочная дисперсия <span>s^2</span> = <span id="sq">Загрузка</span></p>
-
-
+            <br>
+            <h3>7. Построить интервальные оценки параметров распределения</h3>
+            <p>Исправленное среднее квадратичное отклонение <span>S</span>: <span id="S_q">Загрузка</span></p>
+            <p>Значение коэффициента Стьюдента посчитано с использованием следующей <a href="https://www.kontrolnaya-rabota.ru/s/teoriya-veroyatnosti/tablica-studenta/" target="_blank">таблицы</a></p>
+            <p>Коэффициент Стьюдента <span>t</span> при заданных параметрах: <span id="t_st">Загрузка</span></p>
+            <p>Доверительный интервал для математического ожидания: <span id="a1">Загрузка</span> <span> < a < </span><span id="a2">Загрузка</span></p>
+            <br>
+            <p>Значение Сигма посчитано с использованием следующей <a href="https://www.bstu.by/uploads/attachments/metodichki/kafedri/VM_Statist.tabl..pdf" target="_blank">таблицы</a></p>
+            <p>Доверительный интервал для среднего квадратичного отклонения: <span id="b1">Загрузка</span> <span> < Сигма < </span><span id="b2">Загрузка</span></p>
+            <br>
+            <h3>8. Проверить гипотезу о нормальном распределении признака при уровне значимости a = 0.05</h3>
+            <p>Выборочное среднее квадратичное отклонение <span>Сигма</span> = <span id="sigmaB">Загрузка</span></p>
+            <p>Расчет характеристики <span>X^2набл</span> = <span id="Hiq">Загрузка</span> (расчеты можно посмотреть в коде сайта)</p>
+            <br>
+            <p>Для определение характеристики <span>X^2крит</span> была использована <a href="https://math.semestr.ru/group/xixi.php">таблица</a></p>
+            <p>Число степеней свободы <span>k</span> = <span id="k">Загрузка</span></p>
+            <p>Определение характеристики <span>X^2крит</span> = <span id="Hiqk">Загрузка</span></p>
+            <p>Поскольку <span>X^2набл</span> <span id="g1">Загрузка</span> <span>X^2крит</span>, то <span id="g2">Загрузка</span> отвергать гипотезу о нормальном распределении признака при уровне значимости <span>a</span> = <span>0.05</span></p>
+            <br>
+            <h3>Послесловие</h3>
+            <p>Больше работ можно найти <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">тут</a></p>
 
 
         </div>
+        <script src="https://cdn.anychart.com/releases/8.12.0/js/anychart-core.min.js"></script>
+        <script src="https://cdn.anychart.com/releases/8.12.0/js/anychart-cartesian.min.js"></script>
         <script defer src="./index.js"></script>
     </body>
 </html>
