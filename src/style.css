@@ -7,6 +7,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #3CD500 transparent;
+    /* scrollbar-gutter: stable; */
 }
 
 body {
